@@ -76,9 +76,9 @@ public class MemberDAO {
 				+ "','" + dto.getMarriageInt()
 				+ ",'SYSDATE())'";*/
 		
-		sql="INSERT INTO member"
+		sql="INSERT INTO mysql"
 				+"(pid, pname, pw, age, marriage, reg_date)VALUES"
-				+"(?,?,?,?,?,SYSDATE())";
+				+"(?,?,?,?,?, SYSDATE())";
 
 		System.out.println(sql);
 
@@ -89,6 +89,34 @@ public class MemberDAO {
 			stmt.setString(3, dto.pw);
 			stmt.setInt(4, dto.age);
 			stmt.setInt(5, dto.getMarriageInt());
+			res = stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return res;
+	}
+	
+	
+	public int insert2(MemberDTO dto) {
+		int res = 0;
+		
+		sql="INSERT INTO mysql"
+				+"(pid, pname, pw, age, marriage, reg_date, pic, myff)VALUES"
+				+"(?,?,?,?,?,?,?, SYSDATE())";
+
+		System.out.println(sql);
+
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, dto.pid);
+			stmt.setString(2, dto.pname);
+			stmt.setString(3, dto.pw);
+			stmt.setInt(4, dto.age);
+			stmt.setInt(5, dto.getMarriageInt());
+			stmt.setString(6, dto.pic);
+			stmt.setString(7, dto.myff);
 			res = stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

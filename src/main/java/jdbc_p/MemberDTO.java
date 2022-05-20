@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 public class MemberDTO {
-	String pid, pname, pw, tel;
+	String pid, pname, pw, tel, pic, myff;
 	int no,age;
 	boolean marriage;
 	Date reg_date;
@@ -125,12 +125,26 @@ public class MemberDTO {
 		this.tel = tel;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", tel=" + tel + ", no=" + no + ", age="
-				+ age + ", marriage=" + marriage + ", reg_date=" + reg_date + "]";
+
+	public String getPic() {
+		return pic;
 	}
 
-	
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 
+	public String getMyff() {
+		return myff;
+	}
+
+	public void setMyff(String myff) {
+		this.myff = myff;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", tel=" + tel + ", pic=" + pic + ", myff="
+				+ myff + ", no=" + no + ", age=" + age + ", marriage=" + marriage + ", reg_date=" + reg_date + "]";
+	}
 }

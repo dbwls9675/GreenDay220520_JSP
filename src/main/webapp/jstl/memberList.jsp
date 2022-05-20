@@ -1,7 +1,9 @@
 <%@page import="jdbc_p.DBCP_DAO"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,7 @@
 </head>
 <body>
 	<h1>memberList</h1>
+	<c:set var="now" value="<%= new Date() %>"/>
 	<table border="" style="text-align: center">
 		<tr>
 			<td>번호</td>
@@ -28,7 +31,9 @@
 			${dto.pname }</a>
 			<td>${dto.age }</td>
 			<td>${dto.marriage }</td>
-			<td>${dto.reg_date }</td>
+			<td>
+			<fmt:formatDate value="${dto.reg_date }" pattern="yy-MM-dd a h:mm" />
+			</td>
 		</tr>
 		</c:forEach>
 	</table>

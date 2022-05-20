@@ -92,6 +92,12 @@
 <a href="jstl/set_if.jsp">set_if</a>
 <a href="jstl/foreach.jsp">foreach</a>
 <a href="jstl/memberList.jsp">memberList</a>
+<a href="jstl/fmt.jsp">fmt</a>
+<hr>
+
+<h2>file</h2>
+<a href="file/uploadForm.jsp">uploadForm</a>
+<a href="file/joinForm.jsp">joinForm</a>
 <hr>
 
 </body>

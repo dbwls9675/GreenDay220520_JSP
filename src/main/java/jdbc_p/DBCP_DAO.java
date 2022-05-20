@@ -125,6 +125,39 @@ public class DBCP_DAO {
 		return res;
 	}
 	
+	public MemberDTO detailName(String pid) {
+		MemberDTO res = null;
+
+		// sql = "SELECT * FROM comstudy21 WHERE pid = '"+dto.pid+"' and pw =
+		// '"+dto.pw+"'";
+		sql = "SELECT * FROM mysql WHERE pid = ?";
+		System.out.println(sql);
+
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1,pid);
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				res = new MemberDTO();
+				res.setPid(rs.getString("pid"));
+				res.setPname(rs.getString("pname"));
+				res.setAge(rs.getInt("pw"));
+				res.setAge(rs.getInt("age"));
+				res.setMarriage(rs.getInt("marriage"));
+				res.setReg_date(rs.getTimestamp("reg_date"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			close();
+		}
+
+		return res;
+	}
+
 	public void close() {
 
 		if (rs != null)
@@ -141,7 +174,7 @@ public class DBCP_DAO {
 			try {
 				con.close();
 			} catch (SQLException e) {
-			}
+		}
 	}
 
 }
